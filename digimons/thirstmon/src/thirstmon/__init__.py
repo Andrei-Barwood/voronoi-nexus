@@ -10,6 +10,6 @@ __version__ = "0.1.0"
 __author__ = "Anonymous"
 __license__ = "MIT"
 
-from .core import Uthirstmon
+from .core import Thirstmon
 
-__all__ = ["Uthirstmon", "__version__"]
+__all__ = ["Thirstmon", "__version__"]

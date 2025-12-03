@@ -138,11 +138,11 @@ version = "$VERSION"
 description = "$DESCRIPTION"
 readme = "README.md"
 license = {text = "$LICENSE"}
-authors = [{name = "$AUTHOR", email = "dev@example.com"}]
+authors = [{name = "$AUTHOR", email = "andresbarbudo@icloud.com"}]
 requires-python = ">=3.10"
 
 [project.urls]
-Repository = "https://github.com/yourusername/digimon-sec-suite"
+Repository = "https://github.com/Andrei-Barwood/digimon-sec"
 
 [tool.poetry]
 packages = [{include = "$DIGIMON_NAME", from = "src"}]

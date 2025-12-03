@@ -3,7 +3,7 @@
 **Misión RDR2**: Good, Honest Snake Oil  
 **Rol de Ciberseguridad**: threat-filter  
 **Estado**: Rookie (v0.1.0)  
-**Mantenedor**: Anonymous  
+**Mantenedor**: Kirtan Teg Singh 
 **Licencia**: MIT
 
 ## 🎯 Propósito

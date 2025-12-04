@@ -66,6 +66,22 @@ for digimon_dir in digimons/*/; do
     echo ""
 done
 
+
+# Tests de integración
+if [ -f "tests/test_integration.py" ]; then
+    echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+    echo -e "🔗 Testing: ${YELLOW}Integration Tests${NC}"
+    echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+    
+    if pytest tests/test_integration.py -q --tb=short 2>&1; then
+        echo -e "${GREEN}✅ Integration Tests PASSED${NC}"
+    else
+        echo -e "${RED}❌ Integration Tests FAILED${NC}"
+    fi
+    echo ""
+fi
+
+
 # Mostrar resumen final
 echo -e "${BLUE}═══════════════════════════════════════════════════${NC}"
 echo -e "${BLUE}              📊 RESUMEN DE TESTS${NC}"

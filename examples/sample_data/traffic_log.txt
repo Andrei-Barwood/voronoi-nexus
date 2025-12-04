@@ -1,0 +1,20 @@
+Traffic log captured at 2025-12-03 21:00:00
+
+Visited URLs:
+- https://google.com
+- https://github.com
+- https://stackoverflow.com
+
+Email content intercepted:
+From: john.doe@empresa.com
+To: maria.lopez@empresa.com
+
+Hola María,
+
+Te envío los datos que me pediste:
+- Mi email personal: john.personal@gmail.com
+- Tarjeta de crédito para gastos: 4532-1234-5678-9010
+- Teléfono de contacto: +1-555-0199
+
+Saludos,
+John

@@ -1,0 +1,8 @@
+Suspicious traffic detected:
+
+URLs accessed:
+- https://google.com (safe)
+- http://evil-snake-oil.com (SUSPICIOUS)
+- http://malware-download.net (SUSPICIOUS)
+
+User attempted to download file from malware-download.net

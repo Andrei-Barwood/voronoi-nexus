@@ -1,0 +1,24 @@
+name: Test fuzzymon
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'digimons/fuzzymon/**'
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+    
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: cd digimons/fuzzymon && pip install -e ".[dev]"
+      - run: cd digimons/fuzzymon && pytest tests/ -v --cov

@@ -1,8 +1,7 @@
 """
-Pytest configuration for mnemomon tests.
+Pytest config for forensimon.
 
-Ensures the src/ directory is on sys.path so imports work without an
-editable install.
+Adds the local src/ to sys.path so imports work without installing.
 """
 
 import sys
@@ -13,8 +12,4 @@ SRC = ROOT / "src"
 
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
-
-
-
-
 

@@ -1,0 +1,24 @@
+name: Test vulnemon
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'digimons/vulnemon/**'
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+    
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: cd digimons/vulnemon && pip install -e ".[dev]"
+      - run: cd digimons/vulnemon && pytest tests/ -v --cov

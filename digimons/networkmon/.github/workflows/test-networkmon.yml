@@ -1,0 +1,24 @@
+name: Test networkmon
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'digimons/networkmon/**'
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+    
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: cd digimons/networkmon && pip install -e ".[dev]"
+      - run: cd digimons/networkmon && pytest tests/ -v --cov

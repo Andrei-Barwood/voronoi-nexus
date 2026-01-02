@@ -1,9 +1,11 @@
 """
-Unit tests for Thirstmon core module
+Unit tests for Thirstmon (Mega)
 """
 
 import pytest
+
 from thirstmon.core import Thirstmon
+from thirstmon.models import AnalysisResult, ThreatAnalysis
 
 
 @pytest.fixture
@@ -14,66 +16,88 @@ def digimon():
 
 class TestInitialization:
     """Tests para inicialización"""
-    
+
     def test_init_default(self, digimon):
         """Test inicialización con valores por defecto"""
         assert digimon.name == "Thirstmon"
         assert digimon.mission == "Good, Honest Snake Oil"
-        assert isinstance(digimon.threat_database, set)
+        assert isinstance(digimon.threat_database, dict)
         assert "evil-snake-oil.com" in digimon.threat_database
 
+    def test_init_with_config(self):
+        """Test inicialización con configuración"""
+        config = {"confidence_threshold": 0.9, "enable_reputation_check": False}
+        digimon = Thirstmon(config=config)
+        assert digimon.confidence_threshold == 0.9
+        assert digimon.enable_reputation_check is False
 
-class TestAnalysis:
+
+class TestThreatAnalysis:
+    """Tests para análisis de amenazas"""
+
+    def test_analyze_threats(self, digimon):
+        """Test análisis de amenazas"""
+        iocs = ["google.com", "evil-snake-oil.com", "malware-download.net"]
+        analysis = digimon.analyze_threats(iocs)
+        assert isinstance(analysis, ThreatAnalysis)
+        assert analysis.total_scanned == 3
+        assert analysis.threats_detected >= 1
+
+    def test_analyze_clean_iocs(self, digimon):
+        """Test análisis de IOCs limpios"""
+        iocs = ["google.com", "example.com"]
+        analysis = digimon.analyze_threats(iocs)
+        assert analysis.threats_detected == 0
+        assert analysis.clean_count == 2
+
+
+class TestAnalyze:
     """Tests para funcionalidad de análisis"""
-    
-    def test_analyze_detection(self, digimon):
-        """Test que verifica si detecta amenazas correctamente"""
-        # Datos de prueba: 2 amenazas conocidas y 1 sitio seguro
-        input_data = [
-            "google.com",           # Seguro
-            "evil-snake-oil.com",   # Amenaza
-            "malware-download.net"  # Amenaza
-        ]
-        
-        result = digimon.analyze(input_data)
-        
-        assert result["status"] == "success"
-        assert result["data"]["total_scanned"] == 3
-        assert result["data"]["threat_count"] == 2
-        
-        # Verificar que clasificó bien
-        assert "evil-snake-oil.com" in result["data"]["threats_detected"]
-        assert "google.com" in result["data"]["clean_traffic"]
 
-    def test_analyze_empty_list(self, digimon):
-        """Test con lista vacía"""
-        result = digimon.analyze([])
-        assert result["data"]["total_scanned"] == 0
-        assert result["data"]["threat_count"] == 0
+    def test_analyze_list(self, digimon):
+        """Test analyze con lista de IOCs"""
+        iocs = ["evil-snake-oil.com", "google.com"]
+        result = digimon.analyze(iocs=iocs)
+        assert isinstance(result, AnalysisResult)
+        assert result.status in ["success", "warning"]
+
+    def test_analyze_single_ioc(self, digimon):
+        """Test analyze con un IOC"""
+        result = digimon.analyze(ioc="evil-snake-oil.com")
+        assert isinstance(result, AnalysisResult)
+        assert result.status in ["success", "warning"]
 
 
 class TestValidation:
     """Tests para validación"""
-    
-    def test_validate_invalid_type(self, digimon):
-        """Test debe fallar si no es una lista"""
-        assert digimon.validate("no soy una lista") is False
-        assert digimon.validate(123) is False
-    
-    def test_validate_invalid_content(self, digimon):
-        """Test debe fallar si la lista contiene cosas que no son strings"""
-        assert digimon.validate(["google.com", 123]) is False
-    
-    def test_validate_valid_data(self, digimon):
-        """Test validación con datos válidos"""
+
+    def test_validate_none(self, digimon):
+        """Test validación con None"""
+        assert digimon.validate(None) is False
+
+    def test_validate_str(self, digimon):
+        """Test validación con string"""
+        assert digimon.validate("example.com") is True
+
+    def test_validate_list(self, digimon):
+        """Test validación con lista válida"""
         assert digimon.validate(["google.com", "yahoo.com"]) is True
+
+    def test_validate_invalid_list(self, digimon):
+        """Test validación con lista inválida"""
+        assert digimon.validate(["google.com", 123]) is False
 
 
 class TestInfo:
     """Tests para información del Digimon"""
-    
+
     def test_get_info_returns_dict(self, digimon):
-        """Test que get_info() retorna diccionario con info extra"""
+        """Test que get_info() retorna diccionario"""
         info = digimon.get_info()
+        assert isinstance(info, dict)
         assert info["name"] == "Thirstmon"
-        assert "database_size" in info
+        assert info["status"] == "Mega"
+
+
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])

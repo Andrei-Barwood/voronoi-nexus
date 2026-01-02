@@ -4,15 +4,15 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "thirstmon"
-version = "0.1.0"
-description = "Filtra indicadores de compromiso maliciosos"
+version = "3.0.0"
+description = "Filtra indicadores de compromiso maliciosos con análisis avanzado (Mega)"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [{name = "Anonymous", email = "dev@example.com"}]
 requires-python = ">=3.10"
-keywords = ["cybersecurity", "digimon", "threat-filter", "thirstmon"]
+keywords = ["cybersecurity", "digimon", "threat-filter", "thirstmon", "ioc", "threat-detection"]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "Topic :: Security",
     "License :: OSI Approved :: MIT License",

@@ -2,11 +2,11 @@
 bandidmon - Cybersecurity Module
 Part of DIGIMON CYBERSECURITY SUITE
 
-Misión: outlaws from the west
+Misión: Outlaws from the West
 Rol: data-protector
 """
 
-__version__ = "0.1.0"
+__version__ = "3.0.0"
 __author__ = "Kirtan Teg Singh"
 __license__ = "MIT"
 

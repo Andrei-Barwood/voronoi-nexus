@@ -51,38 +51,45 @@ class SecurityPipeline:
         logger.info(f"Processing {len(urls)} URLs and {len(content)} chars of content")
         
         # ===== FASE 1: FILTRADO DE AMENAZAS (Thirstmon) =====
-        threat_analysis = self.threat_filter.analyze(urls)
+        threat_analysis = self.threat_filter.analyze(iocs=urls)
+        
+        # Acceder a los datos del AnalysisResult (ahora es objeto Pydantic)
+        threats_detected = threat_analysis.data.get('threats_detected', 0)
         
         # Si se detectaron amenazas, bloquear todo
-        if threat_analysis['data']['threat_count'] > 0:
+        if threats_detected > 0:
             logger.warning(f"Threats detected! Blocking traffic.")
             return {
                 "status": "BLOCKED",
                 "phase_completed": "threat_filtering",
-                "threat_analysis": threat_analysis,
+                "threat_analysis": threat_analysis.model_dump(),
                 "data_protection": None,
                 "summary": {
-                    "threats_found": threat_analysis['data']['threat_count'],
-                    "blocked_urls": threat_analysis['data']['threats_detected'],
+                    "threats_found": threats_detected,
+                    "blocked_urls": threat_analysis.data.get('matches', []),
                     "action": "Traffic blocked by Thirstmon"
                 }
             }
         
         # ===== FASE 2: PROTECCIÓN DE DATOS (Bandidmon) =====
         logger.info("No threats found. Proceeding to data protection...")
-        data_analysis = self.data_protector.analyze(content)
+        data_analysis = self.data_protector.analyze(text=content)
+        
+        # Acceder a los datos del AnalysisResult
+        total_redacted = data_analysis.data.get('total_redacted', 0)
+        safe_text = data_analysis.data.get('safe_text', content)
         
         return {
             "status": "SAFE",
             "phase_completed": "data_protection",
-            "threat_analysis": threat_analysis,
-            "data_protection": data_analysis,
+            "threat_analysis": threat_analysis.model_dump(),
+            "data_protection": data_analysis.model_dump(),
             "summary": {
                 "threats_found": 0,
                 "urls_scanned": len(urls),
-                "data_redacted": data_analysis['data']['redacted_count'],
+                "data_redacted": total_redacted,
                 "action": "Content processed and sanitized",
-                "safe_content": data_analysis['data']['safe_text']
+                "safe_content": safe_text
             }
         }
     

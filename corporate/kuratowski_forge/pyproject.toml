@@ -1,0 +1,56 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[project]
+name = "kuratowski_forge"
+version = "3.0.0"
+description = "Desensambla binarios y expone patrones de control de flujo sospechosos. (Production)"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "Kirtan Teg Singh", email = "security@snocomm.dev"}]
+requires-python = ">=3.10"
+keywords = ["cybersecurity", "snocomm", "disassembler", "kuratowski_forge"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Security",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.4.0",
+    "isort>=5.12.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/snocomm-security/snocomm-security-suite"
+Documentation = "https://snocomm-security-suite.readthedocs.io"
+Repository = "https://github.com/snocomm-security/snocomm-security-suite/tree/main/corporate/kuratowski_forge"
+Issues = "https://github.com/snocomm-security/snocomm-security-suite/issues"
+
+[tool.poetry]
+packages = [{include = "kuratowski_forge", from = "src"}]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "--strict-markers"
+
+[tool.black]
+line-length = 100
+target-version = ['py310']
+include = "kuratowski_forge"

@@ -308,3 +308,81 @@ modules:
     class_name: LemniscateMnemo
     display_name: Lemniscate Mnemo
     domain: mnemonic
+  - legacy_folder: ransomwaremon
+    folder_name: voronoi_reclaim
+    package_name: voronoi_reclaim
+    class_name: VoronoiReclaim
+    display_name: Voronoi Reclaim
+    domain: ransomware-detection
+  - legacy_folder: malwaremon
+    folder_name: delaunay_sentinel
+    package_name: delaunay_sentinel
+    class_name: DelaunaySentinel
+    display_name: Delaunay Sentinel
+    domain: malware-analysis
+  - legacy_folder: aptmon
+    folder_name: geodesic_pursuit
+    package_name: geodesic_pursuit
+    class_name: GeodesicPursuit
+    display_name: Geodesic Pursuit
+    domain: apt-hunting
+  - legacy_folder: botnetmon
+    folder_name: simplicial_swarm
+    package_name: simplicial_swarm
+    class_name: SimplicialSwarm
+    display_name: Simplicial Swarm
+    domain: botnet-tracking
+  - legacy_folder: steganomon
+    folder_name: radon_veilbreak
+    package_name: radon_veilbreak
+    class_name: RadonVeilbreak
+    display_name: Radon Veilbreak
+    domain: steganography-detection
+  - legacy_folder: cryptoanalyzemon
+    folder_name: elliptic_proof
+    package_name: elliptic_proof
+    class_name: EllipticProof
+    display_name: Elliptic Proof
+    domain: crypto-analysis
+  - legacy_folder: packermon
+    folder_name: minkowski_unpack
+    package_name: minkowski_unpack
+    class_name: MinkowskiUnpack
+    display_name: Minkowski Unpack
+    domain: packer-analysis
+  - legacy_folder: disassemblymon
+    folder_name: kuratowski_forge
+    package_name: kuratowski_forge
+    class_name: KuratowskiForge
+    display_name: Kuratowski Forge
+    domain: disassembly
+  - legacy_folder: detonationmon
+    folder_name: polytope_detonate
+    package_name: polytope_detonate
+    class_name: PolytopeDetonate
+    display_name: Polytope Detonate
+    domain: sandbox-detonation
+  - legacy_folder: emulationmon
+    folder_name: affine_replica
+    package_name: affine_replica
+    class_name: AffineReplica
+    display_name: Affine Replica
+    domain: emulation
+  - legacy_folder: behaviormon
+    folder_name: persistent_nerve
+    package_name: persistent_nerve
+    class_name: PersistentNerve
+    display_name: Persistent Nerve
+    domain: behavior-analysis
+  - legacy_folder: yara-mon
+    folder_name: helly_rules
+    package_name: helly_rules
+    class_name: HellyRules
+    display_name: Helly Rules
+    domain: yara-engine
+  - legacy_folder: signaturemon
+    folder_name: hausdorff_match
+    package_name: hausdorff_match
+    class_name: HausdorffMatch
+    display_name: Hausdorff Match
+    domain: signature-matching

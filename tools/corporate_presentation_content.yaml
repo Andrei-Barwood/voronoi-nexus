@@ -663,3 +663,172 @@ mnemonic:
   ganancia_invertir: "Un responsable de continuidad con la herramienta verifica todos los backups críticos; una sola recuperación exitosa justifica la inversión."
   perdida_no_invertir: "Backups corruptos o inexistentes, imposibilidad de recuperar y rescates pagados o negocio paralizado."
   diferenciador: "Verificación continua de integridad; soporte para múltiples formatos y almacenes; reportes para auditoría y dirección."
+
+ransomware-detection:
+  titulo_rubro: "Detección y contención de ransomware"
+  descripcion: "El ransomware sigue siendo una de las amenazas con mayor impacto financiero y operativo. Detectar señales tempranas y contener en minutos reduce drásticamente el daño."
+  con_vs_sin_rows:
+    - ["Detección de cifrado masivo", "✅ En tiempo real", "❌ Cuando ya hay sistemas bloqueados"]
+    - ["Aislamiento de equipos comprometidos", "✅ Automatizable", "❌ Manual y lento"]
+    - ["Tiempo de recuperación operativa", "✅ Horas", "❌ Días o semanas"]
+  beneficios: "Menor tiempo de inactividad; reducción de impacto económico; resiliencia operativa y mejora de postura ante ciberseguros."
+  ejemplo_vida: "Una pyme de logística detecta actividad de cifrado anómala en un servidor de archivos y lo aísla antes de que la infección alcance ERP y facturación."
+  ganancia_invertir: "Con una persona de seguridad y la solución, el negocio pasa de reacción improvisada a respuesta guiada por evidencias; una crisis evitada suele pagar años de inversión."
+  perdida_no_invertir: "Parada de operaciones, pago potencial de rescate, costes de recuperación, pérdida de datos y daño reputacional frente a clientes."
+  diferenciador: "Detección conductual enfocada en ransomware, priorización por criticidad y guías de contención orientadas a continuidad del negocio."
+
+malware-analysis:
+  titulo_rubro: "Análisis avanzado de malware"
+  descripcion: "Analizar muestras y artefactos maliciosos permite entender impacto real, vector de entrada y acciones de remediación. Sin análisis, se responde a ciegas."
+  con_vs_sin_rows:
+    - ["Clasificación de muestras", "✅ Estructurada y repetible", "❌ Intuitiva o incompleta"]
+    - ["Contexto técnico para el SOC", "✅ Accionable", "❌ Fragmentado"]
+    - ["Tiempo para emitir recomendaciones", "✅ Horas", "❌ Días"]
+  beneficios: "Respuesta más precisa; menor propagación; mejor coordinación entre SOC, IT y dirección."
+  ejemplo_vida: "Tras detectar un archivo sospechoso en correo, el equipo confirma comportamiento downloader y bloquea infraestructura asociada antes de nuevas infecciones."
+  ganancia_invertir: "Un analista con plataforma de análisis multiplica cobertura y calidad de investigación; menos falsos positivos y decisiones más rápidas."
+  perdida_no_invertir: "Errores de diagnóstico, contención tardía, reincidencias del incidente y aumento de coste en horas hombre."
+  diferenciador: "Pipeline de análisis orientado a operación diaria, salidas claras para remediación y trazabilidad para auditoría."
+
+apt-hunting:
+  titulo_rubro: "Caza de amenazas APT"
+  descripcion: "Las amenazas persistentes avanzadas se mueven de forma sigilosa y prolongada. La caza proactiva reduce tiempo de permanencia del atacante."
+  con_vs_sin_rows:
+    - ["Búsqueda de TTPs y patrones persistentes", "✅ Continua", "❌ Solo post-incidente"]
+    - ["Detección de movimiento lateral", "✅ Temprana", "❌ Tardía"]
+    - ["Tiempo de permanencia del atacante", "✅ Reducido", "❌ Prolongado"]
+  beneficios: "Menor exposición prolongada; mejor prevención de exfiltración; fortalecimiento de capacidades SOC."
+  ejemplo_vida: "Un equipo detecta beaconing de baja frecuencia y credenciales abusadas antes de la fase de extracción de datos sensibles."
+  ganancia_invertir: "Con hunting dirigido, una pyme con equipo pequeño consigue capacidades normalmente reservadas a grandes SOC."
+  perdida_no_invertir: "Atacantes residiendo semanas o meses, robo silencioso de información y costes legales/comerciales mayores."
+  diferenciador: "Enfoque práctico de hunting para pymes: hipótesis listas, correlación de señales y priorización por impacto de negocio."
+
+botnet-tracking:
+  titulo_rubro: "Rastreo y desmantelamiento de botnets"
+  descripcion: "Los equipos comprometidos pueden integrarse en botnets y ser usados para fraude, DDoS o distribución de malware. Detectar coordinación C2 es clave."
+  con_vs_sin_rows:
+    - ["Detección de comunicación C2", "✅ Automatizada", "❌ Parcial o inexistente"]
+    - ["Inventario de nodos comprometidos", "✅ Actualizado", "❌ Incierto"]
+    - ["Capacidad de contención", "✅ Rápida", "❌ Reactiva"]
+  beneficios: "Reducción de abuso de infraestructura; menor riesgo reputacional; respuesta más eficaz ante incidentes de red."
+  ejemplo_vida: "Una empresa detecta hosts internos participando en tráfico botnet saliente y bloquea destinos maliciosos en cuestión de minutos."
+  ganancia_invertir: "Seguridad y red ganan visibilidad común; menos tiempo investigando ruido y más foco en hosts realmente comprometidos."
+  perdida_no_invertir: "Uso de infraestructura para ataques a terceros, posibles bloqueos de reputación IP y costes de remediación."
+  diferenciador: "Correlación de patrones de enjambre, detección de nodos activos y acciones de respuesta orientadas a operaciones."
+
+steganography-detection:
+  titulo_rubro: "Detección esteganográfica"
+  descripcion: "La esteganografía oculta payloads en archivos aparentemente legítimos. Detectarla evita que canales invisibles pasen controles tradicionales."
+  con_vs_sin_rows:
+    - ["Detección de contenido oculto", "✅ Especializada", "❌ No cubierta"]
+    - ["Análisis de artefactos multimedia", "✅ Profundo", "❌ Superficial"]
+    - ["Bloqueo de exfiltración encubierta", "✅ Posible", "❌ Difícil de evidenciar"]
+  beneficios: "Mayor cobertura ante amenazas avanzadas; protección frente a exfiltración encubierta; mejora de capacidades forenses."
+  ejemplo_vida: "Durante una investigación, se detecta un archivo de imagen con comandos ocultos usados para activar malware en un endpoint remoto."
+  ganancia_invertir: "Añade una capa diferencial para sectores con alto riesgo de espionaje o fuga de propiedad intelectual."
+  perdida_no_invertir: "Canales de comando y extracción invisibles, detecciones tardías y dificultad para demostrar el vector real."
+  diferenciador: "Motor orientado a señales de ocultamiento real, integración con procesos de triage y reporting técnico-ejecutivo."
+
+crypto-analysis:
+  titulo_rubro: "Criptoanálisis y validación criptográfica"
+  descripcion: "No basta con 'tener cifrado': hay que validar algoritmos, parámetros, claves y uso. Errores criptográficos convierten controles críticos en riesgo."
+  con_vs_sin_rows:
+    - ["Detección de cifrados débiles", "✅ Sistemática", "❌ Esporádica"]
+    - ["Revisión de implementación", "✅ Técnica y trazable", "❌ Manual y parcial"]
+    - ["Preparación para auditorías", "✅ Continua", "❌ De último minuto"]
+  beneficios: "Confidencialidad real, reducción de deuda criptográfica y cumplimiento más sólido frente a auditorías."
+  ejemplo_vida: "Una empresa detecta librerías con algoritmos obsoletos en servicios críticos y corrige antes de una auditoría de cliente enterprise."
+  ganancia_invertir: "Menos riesgo de incidentes por mala implementación y mayor confianza de clientes en procesos de due diligence."
+  perdida_no_invertir: "Datos potencialmente expuestos, hallazgos críticos en auditorías y pérdida de oportunidades comerciales."
+  diferenciador: "Evaluación práctica de uso criptográfico con recomendaciones priorizadas por riesgo y criticidad de activos."
+
+packer-analysis:
+  titulo_rubro: "Detección de packers y ofuscación"
+  descripcion: "Los atacantes usan empaquetado y ofuscación para evadir controles. Identificar estos patrones acelera triage y respuesta."
+  con_vs_sin_rows:
+    - ["Detección de binarios empaquetados", "✅ Automatizada", "❌ Dependiente del analista"]
+    - ["Priorización de muestras evasivas", "✅ Clara", "❌ Mezclada con ruido"]
+    - ["Tiempo de análisis inicial", "✅ Reducido", "❌ Prolongado"]
+  beneficios: "Menor tiempo de investigación; mejor priorización de artefactos de alto riesgo; menos evasiones exitosas."
+  ejemplo_vida: "Un equipo de respuesta identifica rápidamente un loader empaquetado y activa sandboxing reforzado antes de la propagación."
+  ganancia_invertir: "Analistas junior ganan consistencia y analistas senior escalan productividad en investigaciones simultáneas."
+  perdida_no_invertir: "Muestras críticas sin priorizar, retrasos de contención y mayor ventana de exposición."
+  diferenciador: "Señales combinadas de empaquetado, scoring operativo y salidas listas para flujos SOC."
+
+disassembly:
+  titulo_rubro: "Desensamblado y análisis binario"
+  descripcion: "Entender el comportamiento interno de binarios es clave para atribución técnica y remediación precisa. El desensamblado aporta evidencia sólida."
+  con_vs_sin_rows:
+    - ["Visibilidad de flujo de ejecución", "✅ Detallada", "❌ Limitada"]
+    - ["Detección de técnicas anti-análisis", "✅ Identificable", "❌ Fácil de pasar por alto"]
+    - ["Calidad del informe técnico", "✅ Alta", "❌ Inconsistente"]
+  beneficios: "Investigaciones más profundas; mejor inteligencia técnica; remediación basada en evidencia verificable."
+  ejemplo_vida: "Tras un incidente, el equipo extrae rutinas de persistencia del binario y bloquea mecanismos exactos en hardening posterior."
+  ganancia_invertir: "Reduce dependencia de terceros para análisis de alto nivel y fortalece capacidad interna de respuesta."
+  perdida_no_invertir: "Conclusiones incompletas, remediaciones genéricas y repetición de incidentes por falta de entendimiento técnico."
+  diferenciador: "Cobertura de patrones de ofuscación y flujo de control con orientación directa a acciones de defensa."
+
+sandbox-detonation:
+  titulo_rubro: "Detonación segura en sandbox"
+  descripcion: "Detonar artefactos en un entorno controlado permite observar comportamiento real sin comprometer producción."
+  con_vs_sin_rows:
+    - ["Ejecución aislada de muestras", "✅ Segura", "❌ Riesgosa o inexistente"]
+    - ["Observación de comportamiento dinámico", "✅ Completa", "❌ Parcial"]
+    - ["Evidencia para decisión de bloqueo", "✅ Inmediata", "❌ Tardía"]
+  beneficios: "Menor riesgo operativo; decisiones de contención mejor informadas; mejora continua de reglas de detección."
+  ejemplo_vida: "Un archivo sospechoso detonado en sandbox muestra intento de persistencia y C2, permitiendo bloqueo preventivo en toda la red."
+  ganancia_invertir: "Acelera tiempos de triage y evita ejecutar artefactos dudosos en estaciones de analistas."
+  perdida_no_invertir: "Mayor probabilidad de ejecuciones inseguras, clasificación errónea y respuesta tardía."
+  diferenciador: "Flujos de detonación prácticos para operación diaria y resultados accionables para SOC y TI."
+
+emulation:
+  titulo_rubro: "Emulación de comportamientos maliciosos"
+  descripcion: "La emulación reproduce secuencias de comportamiento para anticipar riesgo incluso cuando la muestra intenta evadir ejecución directa."
+  con_vs_sin_rows:
+    - ["Cobertura ante técnicas anti-VM", "✅ Mejorada", "❌ Limitada"]
+    - ["Modelado de secuencias maliciosas", "✅ Estructurado", "❌ Incompleto"]
+    - ["Capacidad de anticipación", "✅ Alta", "❌ Reactiva"]
+  beneficios: "Mayor tasa de detección en escenarios evasivos; mejor preparación para amenazas nuevas; reducción de falsos negativos."
+  ejemplo_vida: "Un artefacto que no se activa en sandbox tradicional revela intención maliciosa mediante emulación de API y secuencia de syscalls."
+  ganancia_invertir: "Permite a equipos pequeños elevar nivel técnico sin aumentar proporcionalmente la carga operativa."
+  perdida_no_invertir: "Amenazas evasivas no detectadas, incidentes recurrentes y mayor exposición a técnicas modernas."
+  diferenciador: "Motor de emulación orientado a señales operativas y priorización de riesgo útil para respuesta inmediata."
+
+behavior-analysis:
+  titulo_rubro: "Análisis de comportamiento malicioso"
+  descripcion: "Analizar comportamiento en lugar de solo firmas mejora detección de variantes nuevas y ataques sin IOC conocido."
+  con_vs_sin_rows:
+    - ["Detección de patrones anómalos", "✅ Contextual", "❌ Basada solo en reglas estáticas"]
+    - ["Cobertura frente a variantes", "✅ Alta", "❌ Baja"]
+    - ["Valor para hunting y SOC", "✅ Directo", "❌ Disperso"]
+  beneficios: "Menos dependencia de firmas; mejor detección temprana; incremento de resiliencia frente a amenazas cambiantes."
+  ejemplo_vida: "Una secuencia inusual de procesos y acceso a credenciales dispara alerta conductual antes de que exista firma pública."
+  ganancia_invertir: "Un analista puede investigar más casos con mejor contexto y menor fatiga por alertas irrelevantes."
+  perdida_no_invertir: "Falsos negativos ante malware nuevo, mayor dwell time del atacante y desgaste del equipo SOC."
+  diferenciador: "Correlación conductual con foco en operatividad, priorización por impacto y soporte para mejora continua de reglas."
+
+yara-engine:
+  titulo_rubro: "Orquestación y ejecución de reglas YARA"
+  descripcion: "YARA sigue siendo estándar para detección por contenido. Gestionar reglas con disciplina mejora precisión y velocidad de respuesta."
+  con_vs_sin_rows:
+    - ["Gobierno del ciclo de reglas", "✅ Estandarizado", "❌ Ad hoc"]
+    - ["Cobertura de escaneo por reglas", "✅ Escalable", "❌ Parcial"]
+    - ["Tiempo de despliegue de nuevas reglas", "✅ Rápido", "❌ Lento"]
+  beneficios: "Detección consistente, menor tiempo para operacionalizar inteligencia y mejor alineación SOC-DFIR."
+  ejemplo_vida: "Tras un incidente, nuevas reglas YARA se publican y ejecutan en todo el entorno en la misma jornada para buscar huellas residuales."
+  ganancia_invertir: "Convierte conocimiento técnico en controles reutilizables, reduciendo tiempo entre hallazgo y defensa efectiva."
+  perdida_no_invertir: "Reglas desactualizadas, detecciones inconsistentes y mayor probabilidad de reinfección."
+  diferenciador: "Ejecución orientada a operación, priorización de reglas por contexto y trazabilidad de resultados."
+
+signature-matching:
+  titulo_rubro: "Correlación y matching de firmas maliciosas"
+  descripcion: "Emparejar firmas y variantes acelera clasificación de eventos y reduce tiempo de respuesta en incidentes repetitivos."
+  con_vs_sin_rows:
+    - ["Correlación de artefactos similares", "✅ Automática", "❌ Manual"]
+    - ["Velocidad de clasificación", "✅ Alta", "❌ Dependiente del analista"]
+    - ["Consistencia de decisiones SOC", "✅ Homogénea", "❌ Variable"]
+  beneficios: "Menor tiempo de análisis, respuesta más consistente y mejor reutilización de conocimiento previo."
+  ejemplo_vida: "Una nueva muestra se asocia en minutos a una familia ya conocida, permitiendo aplicar playbooks probados sin esperar investigación completa."
+  ganancia_invertir: "Optimiza operación diaria del SOC y libera tiempo para casos complejos en vez de repetir triage básico."
+  perdida_no_invertir: "Investigaciones duplicadas, tiempos de respuesta más largos y mayor coste operativo por incidente."
+  diferenciador: "Matching robusto de variantes, enfoque práctico para operaciones y salida lista para decisión de contención."

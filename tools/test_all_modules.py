@@ -42,6 +42,27 @@ def print_separator():
     print(f"{Colors.BLUE}{'━' * 55}{Colors.NC}")
 
 
+def ensure_pytest_available() -> bool:
+    """
+    Verifica que pytest esté disponible en el intérprete actual.
+    """
+    result = subprocess.run(
+        [sys.executable, "-m", "pytest", "--version"],
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode == 0:
+        return True
+
+    print(f"{Colors.RED}❌ pytest no está instalado en este entorno de Python{Colors.NC}")
+    print(f"   Python activo: {sys.executable}")
+    print("   Instale dependencias con uno de estos comandos:")
+    print("   - python -m pip install pytest")
+    print('   - python -m pip install -e ".[dev]"')
+    print()
+    return False
+
+
 def find_modulo_tests(project_root: Path) -> List[Tuple[str, Path]]:
     """
     Encuentra todos los archivos test_core.py en los corporate
@@ -84,7 +105,7 @@ def run_pytest(test_file: Path, modulo_dir: Path, verbose: bool = False, quiet: 
     
     try:
         # Construir comando pytest
-        cmd = ["python", "-m", "pytest", str(test_file)]
+        cmd = [sys.executable, "-m", "pytest", str(test_file)]
         
         if quiet:
             cmd.extend(["-q", "--tb=no"])
@@ -205,7 +226,7 @@ def run_integration_tests(project_root: Path, verbose: bool = False, quiet: bool
     os.chdir(project_root)
     
     try:
-        cmd = ["python", "-m", "pytest", str(integration_test)]
+        cmd = [sys.executable, "-m", "pytest", str(integration_test)]
         if quiet:
             cmd.extend(["-q", "--tb=no"])
         elif verbose:
@@ -322,6 +343,10 @@ Ejemplos:
     if not (project_root / "corporate").exists():
         print(f"{Colors.RED}❌ Error: No se encuentra la carpeta 'corporate'{Colors.NC}")
         print("Ejecuta este script desde la raíz del proyecto o desde tools/")
+        sys.exit(1)
+
+    # Verificar pytest antes de ejecutar cientos de tests.
+    if not ensure_pytest_available():
         sys.exit(1)
     
     # Ejecutar tests

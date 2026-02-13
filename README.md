@@ -41,6 +41,17 @@ El nombre de cada empresa Snocomm sigue una convención que combina:
 | Manifold | Code, Fuzz | Manifold Code, Manifold Fuzz |
 | Lattice | Resource, Permission, Policy | Lattice Resource, Lattice Permission, Lattice Policy |
 | Hyperplane | Guard, Crawl | Hyperplane Guard, Hyperplane Crawl |
+| Voronoi | Reclaim | Voronoi Reclaim |
+| Delaunay | Sentinel | Delaunay Sentinel |
+| Simplicial | Swarm | Simplicial Swarm |
+| Radon | Veilbreak | Radon Veilbreak |
+| Elliptic | Proof | Elliptic Proof |
+| Minkowski | Unpack | Minkowski Unpack |
+| Kuratowski | Forge | Kuratowski Forge |
+| Hausdorff | Match | Hausdorff Match |
+| Affine | Replica | Affine Replica |
+| Persistent | Nerve | Persistent Nerve |
+| Helly | Rules | Helly Rules |
 
 ---
 
@@ -101,6 +112,19 @@ Cada fila es una empresa filial de Snocomm. El **dominio** indica el ámbito té
 | Helix Trace | forensics | `helix_trace` |
 | Simplex Cipher | cipher | `simplex_cipher` |
 | Lemniscate Mnemo | mnemonic | `lemniscate_mnemo` |
+| Voronoi Reclaim | ransomware-detection | `voronoi_reclaim` |
+| Delaunay Sentinel | malware-analysis | `delaunay_sentinel` |
+| Geodesic Pursuit | apt-hunting | `geodesic_pursuit` |
+| Simplicial Swarm | botnet-tracking | `simplicial_swarm` |
+| Radon Veilbreak | steganography-detection | `radon_veilbreak` |
+| Elliptic Proof | crypto-analysis | `elliptic_proof` |
+| Minkowski Unpack | packer-analysis | `minkowski_unpack` |
+| Kuratowski Forge | disassembly | `kuratowski_forge` |
+| Polytope Detonate | sandbox-detonation | `polytope_detonate` |
+| Affine Replica | emulation | `affine_replica` |
+| Persistent Nerve | behavior-analysis | `persistent_nerve` |
+| Helly Rules | yara-engine | `helly_rules` |
+| Hausdorff Match | signature-matching | `hausdorff_match` |
 
 ---
 

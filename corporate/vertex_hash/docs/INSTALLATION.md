@@ -15,8 +15,8 @@ pip install vertex_hash
 ## Instalación desde Código Fuente
 
 ```bash
-git clone https://github.com/snocomm-security/snocomm-security-suite.git
-cd snocomm-security-suite/corporate/vertex_hash
+git clone https://github.com/Andrei-Barwood/voronoi-nexus.git
+cd voronoi-nexus/corporate/vertex_hash
 python -m venv venv
 source venv/bin/activate  # En Windows: venv\Scripts\activate
 pip install -e ".[dev]"

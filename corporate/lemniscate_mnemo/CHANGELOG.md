@@ -44,4 +44,4 @@
 
 ---
 
-[0.1.0]: https://github.com/snocomm-security/snocomm-security-suite/releases/tag/v0.1.0
+[0.1.0]: https://github.com/Andrei-Barwood/voronoi-nexus/releases/tag/v0.1.0

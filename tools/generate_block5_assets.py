@@ -362,10 +362,10 @@ docs = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/snocomm-security/modulo-sec-suite"
-Documentation = "https://modulo-sec-suite.readthedocs.io"
-Repository = "https://github.com/snocomm-security/modulo-sec-suite/tree/main/corporate/{name}"
-Issues = "https://github.com/snocomm-security/modulo-sec-suite/issues"
+Homepage = "https://github.com/Andrei-Barwood/voronoi-nexus"
+Documentation = "https://github.com/Andrei-Barwood/voronoi-nexus#readme"
+Repository = "https://github.com/Andrei-Barwood/voronoi-nexus/tree/main/corporate/{name}"
+Issues = "https://github.com/Andrei-Barwood/voronoi-nexus/issues"
 
 [tool.poetry]
 packages = [{{include = "{name}", from = "src"}}]
@@ -522,8 +522,8 @@ pip install {name}
 ## Instalacion desde Codigo Fuente
 
 ```bash
-git clone https://github.com/snocomm-security/modulo-sec-suite.git
-cd modulo-sec-suite/corporate/{name}
+git clone https://github.com/Andrei-Barwood/voronoi-nexus.git
+cd voronoi-nexus/corporate/{name}
 python -m venv venv
 source venv/bin/activate  # En Windows: venv\\Scripts\\activate
 pip install -e ".[dev]"

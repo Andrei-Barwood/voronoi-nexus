@@ -95,7 +95,8 @@ def transform_content(
         count=1,
     )
     content = re.sub(r"Snocomm Security Suite", "Snocomm Security Suite", content, flags=re.IGNORECASE)
-    content = re.sub(r"modulo-sec-suite", "snocomm-security-suite", content, flags=re.IGNORECASE)
+    content = re.sub(r"modulo-sec-suite", "voronoi-nexus", content, flags=re.IGNORECASE)
+    content = re.sub(r"snocomm-security-suite", "voronoi-nexus", content, flags=re.IGNORECASE)
     content = re.sub(r"modulo.sec.suite", "snocomm.security.suite", content, flags=re.IGNORECASE)
 
     # Remove or replace "módulo = OldClass" alias line
@@ -189,8 +190,20 @@ def refactor_module(project_root: Path, entry: dict) -> bool:
         toml = re.sub(r'name\s*=\s*["\'][^"\']+["\']', f'name = "{new_package}"', toml, count=1)
         toml = re.sub(r'include\s*=\s*["\'][^"\']+["\']', f'include = "{new_package}"', toml)
         toml = re.sub(r"from\s*=\s*[\"']src[\"']", 'from = "src"', toml)
-        toml = re.sub(r"modulo-sec-suite", "snocomm-security-suite", toml, flags=re.IGNORECASE)
-        toml = re.sub(r"modulo-sec-suite\.readthedocs\.io", "snocomm-security-suite.readthedocs.io", toml, flags=re.IGNORECASE)
+        toml = re.sub(r"modulo-sec-suite", "voronoi-nexus", toml, flags=re.IGNORECASE)
+        toml = re.sub(r"snocomm-security-suite", "voronoi-nexus", toml, flags=re.IGNORECASE)
+        toml = re.sub(
+            r"(modulo-sec-suite|snocomm-security-suite)\.readthedocs\.io",
+            "github.com/Andrei-Barwood/voronoi-nexus#readme",
+            toml,
+            flags=re.IGNORECASE,
+        )
+        toml = re.sub(
+            r"https://github\.com/snocomm-security/(modulo-sec-suite|snocomm-security-suite)",
+            "https://github.com/Andrei-Barwood/voronoi-nexus",
+            toml,
+            flags=re.IGNORECASE,
+        )
         toml = transform(toml)
         # Fix Repository path
         toml = re.sub(r"tree/main/corporate/[^\s\]\"]+", f"tree/main/corporate/{new_folder}", toml)

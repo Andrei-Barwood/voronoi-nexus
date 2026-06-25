@@ -15,8 +15,8 @@ pip install simplex_token
 ## Instalación desde Código Fuente
 
 ```bash
-git clone https://github.com/snocomm-security/snocomm-security-suite.git
-cd snocomm-security-suite/corporate/simplex_token
+git clone https://github.com/Andrei-Barwood/voronoi-nexus.git
+cd voronoi-nexus/corporate/simplex_token
 python -m venv venv
 source venv/bin/activate  # En Windows: venv\Scripts\activate
 pip install -e ".[dev]"

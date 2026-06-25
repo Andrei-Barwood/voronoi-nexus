@@ -37,10 +37,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/snocomm-security/snocomm-security-suite"
-Documentation = "https://snocomm-security-suite.readthedocs.io"
-Repository = "https://github.com/snocomm-security/snocomm-security-suite/tree/main/corporate/simplicial_swarm"
-Issues = "https://github.com/snocomm-security/snocomm-security-suite/issues"
+Homepage = "https://github.com/Andrei-Barwood/voronoi-nexus"
+Documentation = "https://github.com/Andrei-Barwood/voronoi-nexus#readme"
+Repository = "https://github.com/Andrei-Barwood/voronoi-nexus/tree/main/corporate/simplicial_swarm"
+Issues = "https://github.com/Andrei-Barwood/voronoi-nexus/issues"
 
 [tool.poetry]
 packages = [{include = "simplicial_swarm", from = "src"}]

@@ -15,8 +15,8 @@ pip install geodesic_session
 ## Instalación desde Código Fuente
 
 ```bash
-git clone https://github.com/snocomm-security/snocomm-security-suite.git
-cd snocomm-security-suite/corporate/geodesic_session
+git clone https://github.com/Andrei-Barwood/voronoi-nexus.git
+cd voronoi-nexus/corporate/geodesic_session
 python -m venv venv
 source venv/bin/activate  # En Windows: venv\Scripts\activate
 pip install -e ".[dev]"

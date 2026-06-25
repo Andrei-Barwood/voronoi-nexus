@@ -15,8 +15,8 @@ pip install affine_replica
 ## Instalación desde Código Fuente
 
 ```bash
-git clone https://github.com/snocomm-security/snocomm-security-suite.git
-cd snocomm-security-suite/corporate/affine_replica
+git clone https://github.com/Andrei-Barwood/voronoi-nexus.git
+cd voronoi-nexus/corporate/affine_replica
 python -m venv venv
 source venv/bin/activate  # En Windows: venv\Scripts\activate
 pip install -e ".[dev]"

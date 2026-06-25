@@ -11,7 +11,7 @@
 
 ---
 
-[3.0.0]: https://github.com/snocomm-security/snocomm-security-suite/releases/tag/v3.0.0
+[3.0.0]: https://github.com/Andrei-Barwood/voronoi-nexus/releases/tag/v3.0.0
 # Changelog - simplex_cipher
 
 ## [0.1.0] - 2025-01-15 - 🔴 Rookie Era
@@ -39,4 +39,4 @@
 
 ---
 
-[0.1.0]: https://github.com/snocomm-security/snocomm-security-suite/releases/tag/v0.1.0
+[0.1.0]: https://github.com/Andrei-Barwood/voronoi-nexus/releases/tag/v0.1.0

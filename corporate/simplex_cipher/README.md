@@ -227,7 +227,7 @@ simplex_cipher/
 
 ## 🤝 Contribuir
 
-Este proyecto es parte de [Snocomm Security Suite](https://github.com/snocomm-security/snocomm-security-suite).
+Este proyecto es parte de [Snocomm Security Suite](https://github.com/Andrei-Barwood/voronoi-nexus).
 
 Por favor, consulta [CONTRIBUTING.md](../../CONTRIBUTING.md) para:
 - Pautas de código
@@ -241,10 +241,10 @@ MIT - Ver archivo [LICENSE](LICENSE)
 
 ## 🔗 Enlaces Útiles
 
-- [Snocomm Security Suite](https://github.com/snocomm-security/snocomm-security-suite)
+- [Snocomm Security Suite](https://github.com/Andrei-Barwood/voronoi-nexus)
 - [Documentación Global](../../docs/)
 - [Catálogo de empresas](../../README.md)
-- [Issues & Discussions](https://github.com/snocomm-security/snocomm-security-suite/issues)
+- [Issues & Discussions](https://github.com/Andrei-Barwood/voronoi-nexus/issues)
 
 ---
 

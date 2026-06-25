@@ -19,8 +19,8 @@ dependencies = [
 dev = ["pytest>=7.4.0", "pytest-cov>=4.1.0", "black>=23.0.0", "flake8>=6.0.0", "mypy>=1.4.0", "isort>=5.12.0"]
 
 [project.urls]
-Homepage = "https://github.com/snocomm-security/snocomm-security-suite"
-Repository = "https://github.com/snocomm-security/snocomm-security-suite/tree/main/corporate/vertex_hook"
+Homepage = "https://github.com/Andrei-Barwood/voronoi-nexus"
+Repository = "https://github.com/Andrei-Barwood/voronoi-nexus/tree/main/corporate/vertex_hook"
 
 [tool.poetry]
 packages = [{include = "vertex_hook", from = "src"}]

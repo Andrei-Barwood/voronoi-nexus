@@ -40,9 +40,18 @@ Gracias por tu interés en contribuir al **Snocomm Security Suite**. Este docume
    python tools/test_all_modules.py --verbose  # salida detallada
    ```
 
-5. Ejecuta los tests de integración del pipeline:
+5. Ejecuta los tests de integración del pipeline y la CLI:
    ```bash
-   pytest tests/test_integration.py -v
+   pytest tests/ -v
+   ```
+
+6. Usa la CLI unificada `snocomm`:
+   ```bash
+   snocomm list
+   snocomm info helix-filter
+   snocomm run helix-filter --iocs evil-snake-oil.com,google.com
+   snocomm pipeline --urls google.com --content "user@example.com"
+   python -m snocomm list --json
    ```
 
 ---

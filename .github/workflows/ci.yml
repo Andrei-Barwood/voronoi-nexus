@@ -29,5 +29,5 @@ jobs:
       - name: Run all module tests
         run: python tools/test_all_modules.py --quiet
 
-      - name: Run integration tests
-        run: pytest tests/test_integration.py -v
+      - name: Run root tests (CLI + integration)
+        run: pytest tests/ -v

@@ -94,6 +94,7 @@ jobs:
 
   release:
     needs: [package-wheels, build-executable]
+    if: ${{ always() && needs.package-wheels.result == 'success' && needs.build-executable.result != 'cancelled' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

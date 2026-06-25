@@ -100,6 +100,10 @@ def write_spec(root: Path, onefile: bool) -> Path:
     hidden = collect_hidden_imports(root)
     spec_path = root / "tools" / "snocomm.generated.spec"
 
+    # Forward slashes evitan secuencias de escape inválidas en Windows (\v, \s, etc.).
+    main_script = (root / "snocomm" / "__main__.py").as_posix()
+    pathex = root.as_posix()
+
     datas_repr = ",\n        ".join(repr(item) for item in datas)
     hidden_repr = ",\n        ".join(repr(item) for item in hidden)
     exe_mode = "True" if onefile else "False"
@@ -111,8 +115,8 @@ def write_spec(root: Path, onefile: bool) -> Path:
 block_cipher = None
 
 a = Analysis(
-    ['{root / "snocomm" / "__main__.py"}'],
-    pathex=['{root}'],
+    ['{main_script}'],
+    pathex=['{pathex}'],
     binaries=[],
     datas=[
         {datas_repr}

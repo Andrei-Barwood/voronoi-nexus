@@ -15,6 +15,8 @@ from __future__ import annotations
 
 import argparse
 import platform
+import shutil
+import stat
 import subprocess
 import sys
 from pathlib import Path
@@ -209,7 +211,11 @@ def main() -> int:
     release_name = args.rename or platform_asset_name()
     release_path = root / "dist" / release_name
     if release_path != binary:
-        release_path.write_bytes(binary.read_bytes())
+        shutil.copy2(binary, release_path)
+
+    if platform.system() != "Windows":
+        mode = release_path.stat().st_mode
+        release_path.chmod(mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
 
     size_mb = release_path.stat().st_size / (1024 * 1024)
     print(f"\n✅ Executable: {release_path} ({size_mb:.1f} MiB)")

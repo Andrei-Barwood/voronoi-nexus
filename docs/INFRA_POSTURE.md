@@ -1,6 +1,6 @@
 # Snocomm — Revisión de postura para infraestructura interna
 
-Guía para equipos de desarrollo e infraestructura (p. ej. en Epic Games) que necesitan evaluar la **postura de ciberseguridad** de hardware, red, acceso y plataformas internas sin instalar Python ni clonar el monorepo.
+Guía para equipos de desarrollo e infraestructura que necesitan evaluar la **postura de ciberseguridad** de hardware, red, acceso y plataformas internas sin instalar Python ni clonar el monorepo.
 
 ---
 
@@ -134,4 +134,4 @@ python tools/build_executable.py --onefile --clean
 
 ---
 
-*Snocomm Security Suite — Herramienta de referencia para revisiones de postura. Complementa, no sustituye, auditorías formales y herramientas de inventario de Epic.*
+*Snocomm Security Suite — Herramienta de referencia para revisiones de postura. Complementa, no sustituye, auditorías formales ni herramientas de inventario de tu organización.*

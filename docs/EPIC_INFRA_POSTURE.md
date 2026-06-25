@@ -16,20 +16,34 @@ Un ejecutable **`snocomm`** que incluye:
 
 ## Inicio rápido (sin Python)
 
-1. Descarga `snocomm` (o `snocomm.exe`) desde [GitHub Releases](https://github.com/Andrei-Barwood/voronoi-nexus/releases).
+1. Descarga el binario para tu plataforma desde [GitHub Releases](https://github.com/Andrei-Barwood/voronoi-nexus/releases):
+
+| Plataforma | Archivo |
+|------------|---------|
+| Linux x86_64 | `snocomm-linux-x86_64` |
+| macOS Apple Silicon | `snocomm-darwin-arm64` |
+| Windows x86_64 | `snocomm-windows-x86_64.exe` |
+
 2. En terminal:
 
 ```bash
-chmod +x snocomm          # macOS / Linux
-./snocomm --version
-./snocomm posture
-./snocomm posture --json --output infra-posture-report.json
+chmod +x snocomm-linux-x86_64    # Linux
+./snocomm-linux-x86_64 --version
+./snocomm-linux-x86_64 posture
+./snocomm-linux-x86_64 posture --json --output infra-posture-report.json
 ```
 
-En Windows:
+macOS:
+
+```bash
+chmod +x snocomm-darwin-arm64
+./snocomm-darwin-arm64 posture --output infra-posture-report.json
+```
+
+Windows:
 
 ```powershell
-.\snocomm.exe posture --output infra-posture-report.json
+.\snocomm-windows-x86_64.exe posture --output infra-posture-report.json
 ```
 
 ---
@@ -115,7 +129,7 @@ Ejecuta:
 ```bash
 pip install -e ".[executable]"
 python tools/build_executable.py --onefile --clean
-# Salida: dist/snocomm  (o dist/snocomm.exe en Windows)
+# Salida: dist/snocomm-{linux|darwin|windows}-{arch}[.exe]
 ```
 
 ---

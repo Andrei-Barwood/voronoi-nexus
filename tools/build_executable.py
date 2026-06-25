@@ -72,6 +72,27 @@ def collect_hidden_imports(root: Path) -> list[str]:
     return hidden
 
 
+def platform_asset_name() -> str:
+    """Default release filename: snocomm-{os}-{arch}[.exe]."""
+    system = platform.system().lower()
+    machine = platform.machine().lower()
+    arch = "x86_64" if machine in {"amd64", "x86_64"} else machine
+    if system == "windows":
+        return f"snocomm-windows-{arch}.exe"
+    if system == "darwin":
+        return f"snocomm-darwin-{arch}"
+    return f"snocomm-linux-{arch}"
+
+
+def built_binary_path(root: Path, onefile: bool) -> Path:
+    if onefile:
+        name = "snocomm.exe" if platform.system() == "Windows" else "snocomm"
+        return root / "dist" / name
+    folder = root / "dist" / "snocomm"
+    name = "snocomm.exe" if platform.system() == "Windows" else "snocomm"
+    return folder / name
+
+
 def write_spec(root: Path, onefile: bool) -> Path:
     datas = collect_datas(root)
     hidden = collect_hidden_imports(root)
@@ -153,6 +174,11 @@ def main() -> int:
     parser.add_argument("--onefile", action="store_true", help="Single-file executable (default)")
     parser.add_argument("--onedir", action="store_true", help="Directory distribution")
     parser.add_argument("--clean", action="store_true", help="Clean PyInstaller cache before build")
+    parser.add_argument(
+        "--rename",
+        metavar="NAME",
+        help="Copia el binario a dist/NAME (default: snocomm-{os}-{arch})",
+    )
     args = parser.parse_args()
 
     onefile = not args.onedir
@@ -175,22 +201,21 @@ def main() -> int:
     if result.returncode != 0:
         return result.returncode
 
-    if onefile:
-        binary = root / "dist" / "snocomm"
-        if platform.system() == "Windows":
-            binary = root / "dist" / "snocomm.exe"
-    else:
-        binary = root / "dist" / "snocomm" / ("snocomm.exe" if platform.system() == "Windows" else "snocomm")
-
-    if binary.exists():
-        size_mb = binary.stat().st_size / (1024 * 1024)
-        print(f"\n✅ Executable: {binary} ({size_mb:.1f} MiB)")
-        print("\nSmoke test:")
-        subprocess.run([str(binary), "--version"], check=False)
-        print(f"\nInfrastructure posture review:\n  {binary} posture --json")
-    else:
+    binary = built_binary_path(root, onefile=onefile)
+    if not binary.exists():
         print("Build finished but binary path not found — check dist/", file=sys.stderr)
         return 1
+
+    release_name = args.rename or platform_asset_name()
+    release_path = root / "dist" / release_name
+    if release_path != binary:
+        release_path.write_bytes(binary.read_bytes())
+
+    size_mb = release_path.stat().st_size / (1024 * 1024)
+    print(f"\n✅ Executable: {release_path} ({size_mb:.1f} MiB)")
+    print("\nSmoke test:")
+    subprocess.run([str(release_path), "--version"], check=False)
+    print(f"\nInfrastructure posture review:\n  {release_path} posture --json")
 
     return 0
 

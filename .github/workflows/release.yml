@@ -6,7 +6,7 @@ on:
       batch:
         description: "Lote a publicar (1-6, o 'all')"
         required: true
-        default: "1"
+        default: "all"
         type: choice
         options:
           - "1"
@@ -17,15 +17,15 @@ on:
           - "6"
           - all
       tag:
-        description: "Tag de release (ej. v1.0.0-batch1)"
+        description: "Tag de release (ej. v1.0.0)"
         required: true
-        default: "v1.0.0-batch1"
+        default: "v1.0.0"
 
 permissions:
   contents: write
 
 jobs:
-  package:
+  package-wheels:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -50,10 +50,70 @@ jobs:
             python tools/package_release_batch.py --batch "${{ inputs.batch }}"
           fi
 
+      - name: Upload wheel packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: wheels-package
+          path: dist/releases/
+          retention-days: 7
+
+  build-executable:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-latest
+            asset_name: snocomm-linux-x86_64
+          - runner: macos-latest
+            asset_name: snocomm-darwin-arm64
+          - runner: windows-latest
+            asset_name: snocomm-windows-x86_64.exe
+
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
       - name: Build snocomm executable
+        shell: bash
         run: |
+          python -m pip install --upgrade pip
           pip install -e ".[executable]"
-          python tools/build_executable.py --onefile --clean
+          python tools/build_executable.py --onefile --clean --rename "${{ matrix.asset_name }}"
+
+      - name: Upload platform binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.asset_name }}
+          path: dist/${{ matrix.asset_name }}
+          retention-days: 7
+
+  release:
+    needs: [package-wheels, build-executable]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release-assets
+          merge-multiple: true
+
+      - name: Flatten release assets
+        run: |
+          mkdir -p dist/releases dist/binaries
+          find release-assets -type f -name 'snocomm-*' -exec cp {} dist/binaries/ \;
+          find release-assets -type f \( \
+            -name '*.whl' -o -name '*.tar.gz' -o -name 'snocomm-batch*.zip' \
+            -o -name 'SHA256SUMS' -o -name 'build-report.json' \
+          \) -exec cp {} dist/releases/ \;
+          echo "Binaries:" && ls -la dist/binaries/
+          echo "Packages:" && ls dist/releases/ | head -20
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -62,10 +122,5 @@ jobs:
           name: Snocomm Suite ${{ inputs.tag }}
           generate_release_notes: true
           files: |
-            dist/releases/**/snocomm-batch*.zip
-            dist/releases/**/SHA256SUMS
-            dist/releases/**/build-report.json
-            dist/releases/**/artifacts/*.whl
-            dist/releases/**/artifacts/*.tar.gz
-            dist/snocomm
-            dist/snocomm.exe
+            dist/releases/**
+            dist/binaries/*

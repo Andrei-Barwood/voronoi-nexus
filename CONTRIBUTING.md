@@ -59,6 +59,7 @@ Gracias por tu interés en contribuir al **Snocomm Security Suite**. Este docume
    ```bash
    pip install -e ".[executable]"
    python tools/build_executable.py --onefile --clean
+   # Genera dist/snocomm-{linux|darwin|windows}-{arch}[.exe]
    # Guía para revisión de infra: docs/EPIC_INFRA_POSTURE.md
    ```
 

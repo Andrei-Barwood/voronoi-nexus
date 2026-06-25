@@ -46,7 +46,7 @@ docs = [
 [project.urls]
 Homepage = "https://github.com/Andrei-Barwood/voronoi-nexus"
 Documentation = "https://github.com/Andrei-Barwood/voronoi-nexus#readme"
-Repository = "https://github.com/Andrei-Barwood/voronoi-nexus/tree/main/corporate/vertex_scan Scan"
+Repository = "https://github.com/Andrei-Barwood/voronoi-nexus/tree/main/corporate/vertex_scan"
 Issues = "https://github.com/Andrei-Barwood/voronoi-nexus/issues"
 
 [tool.poetry]

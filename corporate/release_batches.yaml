@@ -1,0 +1,111 @@
+# Lotes de publicación para GitHub Releases (77 módulos en 7 bloques).
+# Cada lote genera wheels (.whl), sdists (.tar.gz) y un ZIP consolidado.
+version: "1.0.0"
+
+batches:
+  - id: 1
+    name: offensive-defense
+    title: "Block 1 — Offensive & Defense"
+    modules:
+      - helix_filter
+      - simplex_secret
+      - lemniscate_mnemo
+      - simplex_cipher
+      - helix_trace
+      - geodesic_network
+      - vertex_vuln
+      - torus_log
+      - lattice_policy
+      - helix_incident
+      - manifold_fuzz
+
+  - id: 2
+    name: identity-access
+    title: "Block 2 — Identity & Access"
+    modules:
+      - fractal_identity
+      - vertex_auth
+      - torus_token
+      - lattice_permission
+      - vertex_credential
+      - helix_biometric
+      - geodesic_session
+      - polytope_privilege
+      - simplex_pass
+      - tesseract_factor
+      - geodesic_directory
+      - fractal_sso
+      - lemniscate_oauth
+
+  - id: 3
+    name: data-protection
+    title: "Block 3 — Data Protection & Compliance"
+    modules:
+      - polytope_dlp
+      - torus_redact
+      - lemniscate_anon
+      - geodesic_cipher
+      - vertex_hash
+      - fractal_mask
+      - hyperplane_crawl
+      - simplex_token
+      - tesseract_covenant
+      - lemniscate_right
+      - tesseract_health
+      - helix_standard
+      - fractal_veil
+      - lemniscate_archive
+
+  - id: 4
+    name: infrastructure-cloud
+    title: "Block 5 — Infrastructure & Cloud"
+    modules:
+      - fractal_axiom
+      - geodesic_identity
+      - vertex_stillness
+      - hyperplane_guard
+      - torus_vault
+      - helix_vault
+      - polytope_cluster
+      - simplex_container
+      - manifold_code
+      - lattice_resource
+      - lemniscate_horizon
+      - geodesic_ledger
+      - vertex_scan
+
+  - id: 5
+    name: advanced-threats
+    title: "Block 7 — Advanced Threats"
+    modules:
+      - voronoi_reclaim
+      - delaunay_sentinel
+      - geodesic_pursuit
+      - simplicial_swarm
+      - radon_veilbreak
+      - elliptic_proof
+      - minkowski_unpack
+      - kuratowski_forge
+      - polytope_detonate
+      - affine_replica
+      - persistent_nerve
+      - helly_rules
+      - hausdorff_match
+
+  - id: 6
+    name: intelligence-integration
+    title: "Block 8 — Intelligence & Integration"
+    modules:
+      - tesseract_beacon
+      - lattice_tactic
+      - geodesic_strategy
+      - manifold_conductor
+      - hyperplane_bridge
+      - vertex_hook
+      - fractal_report
+      - torus_audit
+      - lemniscate_compliance
+      - polytope_metrics
+      - helix_notify
+      - simplex_ticket
+      - polyhedron_core

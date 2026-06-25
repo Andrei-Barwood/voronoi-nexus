@@ -222,7 +222,7 @@ def main() -> int:
         release_path.chmod(mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
 
     size_mb = release_path.stat().st_size / (1024 * 1024)
-    print(f"\n✅ Executable: {release_path} ({size_mb:.1f} MiB)")
+    print(f"\n[OK] Executable: {release_path} ({size_mb:.1f} MiB)")
     print("\nSmoke test:")
     subprocess.run([str(release_path), "--version"], check=False)
     print(f"\nInfrastructure posture review:\n  {release_path} posture --json")

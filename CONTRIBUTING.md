@@ -8,18 +8,28 @@ Gracias por tu interés en contribuir al **Snocomm Security Suite**. Este docume
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/snocomm-security/snocomm-security-suite.git
-   cd snocomm-security-suite
+   git clone https://github.com/Andrei-Barwood/voronoi-nexus.git
+   cd voronoi-nexus
    ```
 
-2. Crea un entorno virtual (recomendado) e instala dependencias mínimas para ejecutar tests:
+2. Usa **Python 3.10 o superior** (el proyecto no es compatible con 3.9). Con [pyenv](https://github.com/pyenv/pyenv):
+   ```bash
+   pyenv install 3.10.3   # si aún no lo tienes
+   pyenv local 3.10.3     # respeta .python-version en la raíz
+   ```
+
+3. Crea un entorno virtual (recomendado) e instala dependencias:
    ```bash
    python -m venv .venv
    source .venv/bin/activate   # En Windows: .venv\Scripts\activate
+   pip install -e ".[dev]"
+   ```
+   Alternativa mínima solo para tests:
+   ```bash
    pip install pytest pytest-cov pydantic
    ```
 
-3. Ejecuta todos los tests de los módulos corporativos:
+4. Ejecuta todos los tests de los módulos corporativos:
    ```bash
    ./tools/test_all_modules.sh
    ```
@@ -30,7 +40,7 @@ Gracias por tu interés en contribuir al **Snocomm Security Suite**. Este docume
    python tools/test_all_modules.py --verbose  # salida detallada
    ```
 
-4. Ejecuta los tests de integración del pipeline:
+5. Ejecuta los tests de integración del pipeline:
    ```bash
    pytest tests/test_integration.py -v
    ```

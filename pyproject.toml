@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "snocomm-security-suite"
 version = "1.0.0"
-description = "Snocomm Security Suite — monorepo holding for 51 cybersecurity modules"
+description = "Snocomm Security Suite — monorepo holding for 77 cybersecurity modules"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [{name = "Kirtan Teg Singh", email = "security@snocomm.dev"}]
@@ -37,10 +37,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/snocomm-security/snocomm-security-suite"
-Documentation = "https://snocomm-security-suite.readthedocs.io"
-Repository = "https://github.com/snocomm-security/snocomm-security-suite"
-Issues = "https://github.com/snocomm-security/snocomm-security-suite/issues"
+Homepage = "https://github.com/Andrei-Barwood/voronoi-nexus"
+Documentation = "https://github.com/Andrei-Barwood/voronoi-nexus#readme"
+Repository = "https://github.com/Andrei-Barwood/voronoi-nexus"
+Issues = "https://github.com/Andrei-Barwood/voronoi-nexus/issues"
 
 [tool.setuptools.packages.find]
 include = ["shared*"]

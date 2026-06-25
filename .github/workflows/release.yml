@@ -50,6 +50,11 @@ jobs:
             python tools/package_release_batch.py --batch "${{ inputs.batch }}"
           fi
 
+      - name: Build snocomm executable
+        run: |
+          pip install -e ".[executable]"
+          python tools/build_executable.py --onefile --clean
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
@@ -62,3 +67,5 @@ jobs:
             dist/releases/**/build-report.json
             dist/releases/**/artifacts/*.whl
             dist/releases/**/artifacts/*.tar.gz
+            dist/snocomm
+            dist/snocomm.exe

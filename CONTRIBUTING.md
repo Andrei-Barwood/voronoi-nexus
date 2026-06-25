@@ -51,7 +51,15 @@ Gracias por tu interés en contribuir al **Snocomm Security Suite**. Este docume
    snocomm info helix-filter
    snocomm run helix-filter --iocs evil-snake-oil.com,google.com
    snocomm pipeline --urls google.com --content "user@example.com"
+   snocomm posture --output infra-posture-report.json
    python -m snocomm list --json
+   ```
+
+7. Construir ejecutable standalone (PyInstaller):
+   ```bash
+   pip install -e ".[executable]"
+   python tools/build_executable.py --onefile --clean
+   # Guía para revisión de infra: docs/EPIC_INFRA_POSTURE.md
    ```
 
 ---

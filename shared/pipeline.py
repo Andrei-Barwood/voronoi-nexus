@@ -11,9 +11,13 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List
 
-# Resolve project root from this file's location (shared/ is one level below root)
-_PROJECT_ROOT = Path(__file__).resolve().parents[1]
-_CORPORATE_DIR = _PROJECT_ROOT / "corporate"
+# Resolve project root (supports PyInstaller bundles via snocomm.paths)
+try:
+    from snocomm.paths import project_root as _project_root
+except ImportError:
+    _project_root = lambda: Path(__file__).resolve().parents[1]  # noqa: E731
+
+_CORPORATE_DIR = _project_root() / "corporate"
 
 # Agregar rutas de los módulos Snocomm al path
 for _mod in ("helix_filter", "simplex_secret"):

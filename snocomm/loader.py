@@ -7,7 +7,8 @@ import sys
 from pathlib import Path
 from typing import Any, Type
 
-from snocomm.manifest import ModuleMeta, project_root
+from snocomm.manifest import ModuleMeta
+from snocomm.paths import project_root
 
 
 def module_src_path(meta: ModuleMeta) -> Path:

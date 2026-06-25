@@ -11,6 +11,7 @@ import click
 
 from snocomm import __version__
 from snocomm.manifest import load_manifest, resolve_module
+from snocomm.posture import run_infra_posture
 from snocomm.runner import merge_overrides, run_analyze, run_info
 
 
@@ -175,6 +176,76 @@ def pipeline(urls: str, content: str, as_json: bool) -> None:
         click.echo(f"  {key}: {value}")
 
 
+@main.command("posture")
+@click.option(
+    "--config",
+    type=click.Path(exists=True, path_type=Path),
+    help="JSON de configuración compartida para los módulos",
+)
+@click.option(
+    "--input",
+    "input_path",
+    type=click.Path(exists=True, path_type=Path),
+    help="JSON con overrides por módulo: {\"vertex_vuln\": {...}}",
+)
+@click.option(
+    "--output",
+    "output_path",
+    type=click.Path(path_type=Path),
+    help="Guardar reporte JSON en archivo",
+)
+@click.option("--json", "as_json", is_flag=True, help="Salida en JSON")
+def posture(
+    config: Path | None,
+    input_path: Path | None,
+    output_path: Path | None,
+    as_json: bool,
+) -> None:
+    """Evalúa postura de seguridad de infraestructura interna (17 controles)."""
+    input_overrides = None
+    if input_path:
+        input_overrides = json.loads(input_path.read_text(encoding="utf-8"))
+
+    report = run_infra_posture(config=_load_config(config), input_overrides=input_overrides)
+
+    if output_path:
+        output_path.write_text(
+            json.dumps(report, indent=2, ensure_ascii=False, default=str) + "\n",
+            encoding="utf-8",
+        )
+
+    if as_json or output_path:
+        if as_json:
+            _echo_json(report)
+        elif output_path:
+            click.echo(f"Reporte guardado en {output_path}")
+        return
+
+    click.echo("Snocomm — Infrastructure Security Posture")
+    if report.get("data_mode") == "demo_baseline":
+        click.echo("(Modo demo — usa --input con datos reales de tu infraestructura)\n")
+    click.echo(f"Nivel: {report['posture_level']}  |  Score: {report['overall_score']}/100")
+    click.echo(
+        f"Controles: {report['summary']['total_checks']}  "
+        f"(OK: {report['summary']['passed']}, "
+        f"Warnings: {report['summary']['warnings']}, "
+        f"Failed: {report['summary']['failed']})\n"
+    )
+
+    for category, data in sorted(report["categories"].items()):
+        click.echo(f"## {category.upper()} — score {data['score']}/100")
+        for check in data["checks"]:
+            click.echo(
+                f"  [{check['status'].upper():7}] {check['display_name']:<28} {check['focus']}"
+            )
+        click.echo()
+
+    if report["priority_actions"]:
+        click.echo("Acciones prioritarias:")
+        for item in report["priority_actions"]:
+            click.echo(f"  - {item['module']} ({item['category']}): {item['reason']}")
+
+
 @main.command("domains")
 @click.option("--json", "as_json", is_flag=True, help="Salida en JSON")
 @click.pass_context
@@ -192,14 +263,6 @@ def domains(ctx: click.Context, as_json: bool) -> None:
     click.echo("Dominios disponibles:\n")
     for domain, count in sorted(counts.items()):
         click.echo(f"  {domain:<40} {count} módulo(s)")
-
-
-def cli_entry() -> None:
-    try:
-        main(standalone_mode=False)
-    except click.ClickException as exc:
-        click.echo(f"Error: {exc.message}", err=True)
-        sys.exit(1)
 
 
 if __name__ == "__main__":

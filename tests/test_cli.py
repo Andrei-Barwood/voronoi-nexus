@@ -106,3 +106,22 @@ def test_cli_domains(runner):
     result = runner.invoke(main, ["domains"])
     assert result.exit_code == 0
     assert "threat-intel" in result.output
+
+
+def test_cli_posture(runner):
+    result = runner.invoke(main, ["posture", "--json"])
+    assert result.exit_code == 0
+    report = json.loads(result.output)
+    assert report["report_type"] == "infrastructure_security_posture"
+    assert report["summary"]["total_checks"] == 17
+    assert "posture_level" in report
+    assert "overall_score" in report
+
+
+def test_cli_posture_output_file(runner, tmp_path):
+    out = tmp_path / "posture.json"
+    result = runner.invoke(main, ["posture", "--output", str(out)])
+    assert result.exit_code == 0
+    assert out.exists()
+    report = json.loads(out.read_text())
+    assert len(report["checks"]) == 17

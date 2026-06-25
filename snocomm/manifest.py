@@ -5,6 +5,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
+from snocomm.paths import project_root
+
 
 @dataclass(frozen=True)
 class ModuleMeta:
@@ -17,10 +19,6 @@ class ModuleMeta:
     @property
     def cli_name(self) -> str:
         return self.folder_name.replace("_", "-")
-
-
-def project_root() -> Path:
-    return Path(__file__).resolve().parents[1]
 
 
 def load_manifest(manifest_path: Path | None = None) -> list[ModuleMeta]:
